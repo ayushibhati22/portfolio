@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: ui-monospace, monospace;
+
+  --color-background: #f5f0e8;
+  --color-foreground: #1a1a1a;
+  --color-card: #faf7f2;
+  --color-card-foreground: #1a1a1a;
+  --color-primary: #1a1a1a;
+  --color-primary-foreground: #faf7f2;
+  --color-secondary: #e8e2d9;
+  --color-secondary-foreground: #1a1a1a;
+  --color-muted: #e8e2d9;
+  --color-muted-foreground: #6b6560;
+  --color-accent: #f5c518;
+  --color-accent-foreground: #1a1a1a;
+  --color-border: #d4cfc6;
+  --color-input: #d4cfc6;
+  --color-ring: #1a1a1a;
+  --color-cream: #f5f0e8;
+  --color-blue-section: #b8d4e3;
+  --color-yellow: #f5c518;
+  --color-yellow-dark: #e8b923;
+  --color-stamp: #4a7fd4;
+}
+
+* {
+  @apply border-border;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 17px;
+}
+
+@media (min-width: 1280px) {
+  html { font-size: 18px; }
+}
+
+body {
+  @apply bg-background text-foreground font-sans antialiased;
+  letter-spacing: -0.01em;
+}
+
+.paper-texture {
+  background-color: var(--color-cream);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.card-paper {
+  background: linear-gradient(145deg, #faf7f2 0%, #f0ebe3 100%);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    0 24px 48px rgba(0, 0, 0, 0.06);
+}
+
+.section-shell {
+  @apply mx-auto max-w-5xl px-5 sm:px-8;
+}
+
+.section-block {
+  @apply py-24 sm:py-32;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.heading-xl {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.heading-lg {
+  font-family: var(--font-serif);
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+.body-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-muted-foreground);
+}
+
+.label-caps {
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.btn-yellow {
+  @apply inline-flex items-center justify-center rounded-full bg-[var(--color-yellow)] px-8 py-3.5 text-base font-semibold text-foreground transition-all duration-300;
+  box-shadow: 0 4px 14px rgba(245, 197, 24, 0.35);
+}
+
+.btn-yellow:hover {
+  @apply scale-[1.03];
+  box-shadow: 0 6px 20px rgba(245, 197, 24, 0.45);
+}
+
+.stamp {
+  @apply inline-flex h-16 w-16 items-center justify-center rounded-full border-2 border-dashed text-center;
+  border-color: var(--color-stamp);
+  color: var(--color-stamp);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  transform: rotate(-12deg);
+}
+
+.ticket-card {
+  @apply relative overflow-hidden rounded-2xl border border-border bg-card;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.ticket-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 45%;
+  width: 1px;
+  background: repeating-linear-gradient(to bottom, var(--color-border) 0px, var(--color-border) 6px, transparent 6px, transparent 12px);
+}
+
+.ticket-notch {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-blue-section);
+  transform: translateY(-50%);
+}
+
+.ticket-notch-left { left: -10px; }
+.ticket-notch-right { right: -10px; }
+
+::selection {
+  background: rgba(245, 197, 24, 0.35);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.checkerboard {
+  background-color: var(--color-cream);
+  background-image:
+    linear-gradient(45deg, rgba(184, 212, 227, 0.15) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(184, 212, 227, 0.15) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(184, 212, 227, 0.15) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(184, 212, 227, 0.15) 75%);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0;
+}
+
+.checkerboard-alt {
+  background-color: #b8d4e3;
+  background-image:
+    linear-gradient(45deg, rgba(245, 240, 232, 0.4) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(245, 240, 232, 0.4) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(245, 240, 232, 0.4) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(245, 240, 232, 0.4) 75%);
+  background-size: 36px 36px;
+  background-position: 0 0, 0 18px, 18px -18px, -18px 0;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 3s ease-in-out infinite;
+}
