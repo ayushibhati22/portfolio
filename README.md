@@ -1,6 +1,6 @@
 # Ayushi Bhati — Portfolio
 
-Modern dark-themed personal portfolio built with React, Tailwind CSS, Framer Motion, and Three.js.
+
 
 ## Run locally
 
@@ -26,11 +26,4 @@ npm run preview
 - React Three Fiber (hero 3D network motif)
 - shadcn/ui-style components
 
-## Resume
 
-Place your PDF at `public/Ayushi_Bhati_Resume.pdf` (included).
-
-## License
-
-MIT
-# portfolio
